@@ -18,3 +18,7 @@ Before running the tests, ensure you have the following installed:
 ```bash
 git clone https://github.com/kencode7/lendersqr-postman.git
 cd lendersqr-postman
+
+### Run test locally
+newman run postman/your-collection.json -e postman/your-environment.json
+
