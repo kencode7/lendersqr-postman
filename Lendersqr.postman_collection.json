@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "34ff84cd-27ce-4a1d-b644-eddb521f53fa",
+		"name": "Lendersqr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10191050"
+	},
+	"item": [
+		{
+			"name": "Validation Module",
+			"item": [
+				{
+					"name": "Bank account",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response message is correct\", function () {",
+									"  var jsonData = pm.response.json();",
+									"  pm.expect(jsonData.message).to.eql(\"Expected message\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-length": true,
+							"host": true,
+							"connection": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"status\":\"success\",\n   \"message\":\"Successful\",\n   \"data\":{\n      \"bvn\":\"\",\n      \"tier\":null,\n      \"logo_url\":\"https://lendstack-s3.s3.us-east-2.amazonaws.com/bank_logos/057.png\",\n      \"bank_code\":\"057\",\n      \"account_name\":\"ADO JOHN SULE\",\n      \"account_number\":\"1010118812\"\n   },\n   \"meta\":{\n      \"balance\":50000\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://adjutor.lendsqr.com/verification/bankaccount",
+							"protocol": "https",
+							"host": [
+								"adjutor",
+								"lendsqr",
+								"com"
+							],
+							"path": [
+								"verification",
+								"bankaccount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Karma lookup",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Desitioning Module",
+			"item": [
+				{
+					"name": "List Models",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Model",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Miscellaneous",
+			"item": [
+				{
+					"name": "Bank List",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Status check",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data API",
+			"item": [
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get options",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://adjutor.lendsqr.com/verification",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": "---",
+			"type": "string"
+		}
+	]
+}
